@@ -1,17 +1,17 @@
-<h1 align="center">Kontaktliste-JS</h1>
+#Kontaktliste-JS
 
-Forsiden: 
+## Forsiden: 
 
 ![alt text](./assets/forside.jpg "Forside")
 
-Søk: 
+## Søk: 
 
 ![alt text](./assets/search.jpg "Forside")
 
-Rediger kontakt: 
+## Rediger kontakt: 
 
 ![alt text](./assets/rediger.jpg "Forside")
 
-Legg til kontakt: 
+## Legg til kontakt: 
 
 ![alt text](./assets/addcontact.jpg "Forside")
