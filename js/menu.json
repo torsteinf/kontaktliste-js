@@ -1,0 +1,22 @@
+[
+  {
+    "id": "forside",
+    "scriptsrc": "js/slideshow.js",
+    "menuText": "Forside"
+  },
+  {
+    "id": "searchContact",
+    "scriptsrc": "js/search.js",
+    "menuText": "Søk kontakter"
+  },
+  {
+    "id": "addContact",
+    "scriptsrc": "",
+    "menuText": "Legg til kontakt"
+  },
+  {
+    "id": "listContacts",
+    "scriptsrc": "",
+    "menuText": "Liste over kontakter"
+  }
+]

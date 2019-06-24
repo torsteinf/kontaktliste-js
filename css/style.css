@@ -1,0 +1,128 @@
+/* Utseende for navbar. */
+
+.navbar {
+  margin-bottom: 10px;
+}
+
+.navbar ul {
+  border-radius: 15px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #606c76;
+    
+}
+
+.navbar li {
+  float: left;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Farge for listeelement som musen befinner seg over. */
+.navbar li a:hover {
+  background-color: #882cbf;
+}
+
+/* Farge for listelementet som er i bruk. */
+li.active {
+  background-color: #882cbf; 
+}
+
+/* Skjuler alle sections. */
+main>section {
+  display: none;
+}
+
+/* Viser section som er i bruk. */
+main>section.active {
+  display: block;
+}
+
+/* Størrelse på slideshowet. */
+.slideshow {
+  position:relative;
+  width: auto;
+  height: 80vh;
+}
+
+/* Det er to div-tagger inne i slideshow-diven. En ligger over den andre og den nærmest brukeren 
+brukes for å fade mellom to bilder. */
+.slideshow div {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #FFF;
+  opacity: 0;
+  transition: opacity 4s;
+}
+
+/* :first-child finner den første div-en inne i slideshow, og gir den z-index 0. z-index viser hvilken "etasje" 
+den aktuelle css-en befinner seg i. */
+.slideshow>div:first-child {
+  
+  z-index: 0;
+}
+
+/* :last-shild finner den siste div-en inne i slideshow (i dette tilfelle div nummer 2. Den får z-index 1 som 
+betyr at den vil komme over den forrige. */
+.slideshow>div:last-child {
+  z-index: 1;
+}
+
+/* Skifter museutseende når en bruker hoverer musa over tabellraden med søkeresultater. Dette for å vise
+brukeren at han/hun kan trykke på den. */
+.lytterad {
+  cursor: pointer;
+}
+
+/* 
+Modal
+Har hentet inspirasjon fra 
+https://www.cssscript.com/minimal-modal-window-with-plain-javascript/
+*/
+
+.is-hidden { display: none; }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  border-radius: 5px;
+  padding: 20px;
+  width: 90%;
+  position: relative;
+  min-height: 300px;
+  max-height: 90%;
+  margin: 2% auto 0;
+  background: #fff;
+  overflow-y: scroll;
+  -webkit-box-shadow: 0 10px 6px -6px #000;
+  -moz-box-shadow: 0 10px 6px -6px #000;
+  box-shadow: 0 10px 6px -6px #000;
+}
+
+/* CSS for kartet. Setter kun høyde på kartet. */
+#mapid { 
+  height: 600px; 
+}

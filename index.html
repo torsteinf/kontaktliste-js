@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+   crossorigin=""></script>
+  <title>Prosjekt 3 Torstein Frogner</title>
+</head>
+<body>
+  <header class="container">
+    <h1>Prosjekt III</h1>
+  </header>
+
+  <nav class="navbar container">
+      <ul>
+      </ul>
+  </nav>
+
+  <main class="container">
+    <section id="forside" class="active">
+      <h2>Velkommen til mitt prosjekt 3</h2>
+      <div class="row">
+        <div class="column">
+          <p>Dette er igjen en Single Page Application, men litt forbedret fra forrige gang. Denne gangen ønsker vi at om en bruker laster siden på nytt så skal han/hun fortsette å være på samme side som når vedkommende trykket reload.</p>
+          <p>Dette er starten på et online kontaktregister, kontakter lagres via <a href="https://folk.ntnu.no/oeivindk/imt1441/storage/">https://folk.ntnu.no/oeivindk/imt1441/storage/</a></p>
+          <p>Siden «Søk kontakt» gir mulighet til å søke etter kontaker mens «Legg til kontakt» benyttes for å legge til kontakter.</p>
+        </div>
+        <div class="column">
+          <div class="slideshow"></div>
+        </div>
+      </div>
+      
+    </section>
+
+    
+ 
+    <section id="searchContact">
+      <h2>Søk i kontaktregisteret</h2>
+      <form>
+        <label for="searchField">Søk</label>
+        <input type="text" name="searchField" id="searchField" placeholder="Søk her"/>
+      </form>
+      <div id="searchList"></div>
+      <table id="searchTable">
+
+      </table>
+
+      <div class="overlay is-hidden" id="overlay">
+        <div class="modal-content">
+          
+          <h3>Rediger kontakt</h3>
+          <div class="row">
+            <div class="column">
+              <form action="" method="post">
+                <label for="redigerfornavn">Fornavn</label>
+                <input type="text" name="redigerfornavn" id="redigerfornavn">
+                <label for="redigeretternavn">Etternavn</label>
+                <input type="text" name="redigeretternavn" id="redigeretternavn">
+                <label for="redigergate">Gate</label>
+                <input type="text" name="redigergate" id="redigergate">
+                <label for="redigerpostnr">Postnummer</label>
+                <input type="number" name="redigerpostnr" id="redigerpostnr">
+                <label for="redigerpoststed">Poststed</label>
+                <input type="text" name="redigerpoststed" id="redigerpoststed">
+                <label for="redigerepost">Epost</label>
+                <input type="email" name="epost" id="redigerepost">
+                <label for="redigertelefon">Telefon</label>
+                <input type="tel" name="redigertelefon" id="redigertelefon">
+                <p id="idx" class="is-hidden"></p>
+                <button type="submit" id="redigerKontaktKnapp" onclick="closeModal();">Rediger kontakt</button> <button onclick="closeModal();">Lukk</button>
+              </form>
+    
+              <div id="fulltnavn"></div>
+              <div id="adresse"></div>
+            </div>
+            <div class="column" id="kartplassering">
+              
+            </div>
+          </div>
+          
+
+          
+          </div>
+        </div>
+    </section>
+
+    <section id="addContact">
+      <h2>Legg til kontakt</h2>
+      <form action="" method="post">
+        <label for="fornavn">Fornavn</label>
+        <input type="text" name="fornavn" id="fornavn">
+        <label for="etternavn">Etternavn</label>
+        <input type="text" name="etternavn" id="etternavn">
+        <label for="gate">Gate</label>
+        <input type="text" name="gate" id="gate">
+        <label for="postnr">Postnummer</label>
+        <input type="number" name="postnr" id="postnr">
+        <label for="poststed">Poststed</label>
+        <input type="text" name="poststed" id="poststed">
+        <label for="epost">Epost</label>
+        <input type="email" name="epost" id="epost">
+        <label for="telefon">Telefon</label>
+        <input type="tel" name="telefon" id="telefon">
+        <button type="submit" id="leggTilKontaktKnapp">Legg til kontakt</button>
+      </form>
+    </section>
+
+    <section id="listContacts">
+      <h2>Liste over alle kontakter</h2>
+      
+      <table id="kontaktlistetabell">
+
+      </table>
+
+
+      <p id="antallKontakter"></p>
+
+      <div class="overlay is-hidden" id="overlayList">
+        <div class="modal-content">
+          
+          <h3>Rediger kontakt</h3>
+          <div class="row">
+            <div class="column">
+              <form action="" method="post">
+                <label for="redigerfornavn">Fornavn</label>
+                <input type="text" name="redigerfornavn" id="redigerfornavn">
+                <label for="redigeretternavn">Etternavn</label>
+                <input type="text" name="redigeretternavn" id="redigeretternavn">
+                <label for="redigergate">Gate</label>
+                <input type="text" name="redigergate" id="redigergate">
+                <label for="redigerpostnr">Postnummer</label>
+                <input type="number" name="redigerpostnr" id="redigerpostnr">
+                <label for="redigerpoststed">Poststed</label>
+                <input type="text" name="redigerpoststed" id="redigerpoststed">
+                <label for="redigerepost">Epost</label>
+                <input type="email" name="epost" id="redigerepost">
+                <label for="redigertelefon">Telefon</label>
+                <input type="tel" name="redigertelefon" id="redigertelefon">
+                <p id="idx" class="is-hidden"></p>
+                <button type="submit" id="redigerKontaktKnapp" onclick="closeModal();">Rediger kontakt</button> <button onclick="closeModal();">Lukk</button>
+              </form>
+    
+              <div id="fulltnavn"></div>
+              <div id="adresse"></div>
+            </div>
+            
+            <div class="column" id="kartplassering">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <script src="js/classes/Kontaktliste.js"></script>
+  <script src="js/classes/Menu.js" charset="utf-8"></script>
+  <script src="js/start.js"></script>
+
+  <script>
+    new Menu('body>nav>ul', 'body>main>section', 'js/menu.json');
+  </script>
+</body>
+</html>
